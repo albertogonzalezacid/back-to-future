@@ -27,4 +27,13 @@ describe("Inventory", () => {
 
     expect(inventory.project(now)).toEqual([element])
   })
+
+  it("adds several elements for the same day", () => {
+    const now = new Date()
+    const elements = [Fruit.create("🍐"), Fruit.create("🍉"), Fruit.create("🥝")]
+
+    elements.forEach((element) => inventory.add(now, element))
+
+    expect(inventory.project(now)).toEqual(elements)
+  })
 })
