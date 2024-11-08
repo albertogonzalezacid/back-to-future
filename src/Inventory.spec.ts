@@ -36,4 +36,17 @@ describe("Inventory", () => {
 
     expect(inventory.project(now)).toEqual(elements)
   })
+
+    it("adds several elements for the different days", () => {
+      const now = new Date()
+      const tomorrow = new Date("2024-11-09")
+      const elementsNow = [Fruit.create("🍐"), Fruit.create("🍉"), Fruit.create("🥝")]
+      const elementsTomorrow = [Fruit.create("🍇")]
+
+      elementsNow.forEach((element) => inventory.add(now, element))
+      elementsTomorrow.forEach((element) => inventory.add(tomorrow, element))
+
+      expect(inventory.project(now)).toEqual(elementsNow)
+      expect(inventory.project(tomorrow)).toEqual(elementsTomorrow)
+    })
 })
