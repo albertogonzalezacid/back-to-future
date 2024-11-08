@@ -10,6 +10,6 @@ describe("Inventory", () => {
     const now = new Date()
     const inventory = new Inventory()
 
-    inventory.project(now)
+    expect(inventory.project(now)).toEqual([])
   })
 })
